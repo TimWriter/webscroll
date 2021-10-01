@@ -1,0 +1,102 @@
+body {
+    position: relative;
+    margin: 30px;
+
+    section {
+        position: absolute;
+        background-color: #ECECEC;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        font-family: 'Sora',
+            sans-serif;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+
+
+        .top,
+        .bottom {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+        }
+
+        .center {
+            #peace {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                height: 20%;
+
+            }
+
+            #circle {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                height: 45%;
+                animation: turn 10s infinite;
+                animation-timing-function: linear;
+                transition: .5s;
+
+                &:hover {
+                    height: 50%;
+                    cursor: url('../images/hand_peace.png'),
+                        auto;
+                }
+            }
+
+            @keyframes turn {
+                from {
+                    transform: translate(-50%, -50%) rotate(0deg);
+                }
+
+                to {
+                    transform: translate(-50%, -50%) rotate(360deg);
+                }
+            }
+        }
+
+        h3 {
+            display: inline-block;
+            font-weight: 500;
+            margin: 2em 2em;
+
+            a {
+                color: #000;
+                text-decoration: none;
+                padding: .5em .5em;
+
+                .charHover {
+                    color: lightcoral !important;
+                }
+            }
+        }
+
+        #mail {
+            &:hover {
+                a {
+                    cursor: url('../images/hand.png'),
+                        auto;
+                }
+
+
+            }
+        }
+
+        #impressum {
+            &:hover {
+                a {
+                    cursor: url('../images/hand.png'),
+                        auto;
+                }
+
+
+            }
+        }
+    }
+}

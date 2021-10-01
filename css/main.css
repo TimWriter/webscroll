@@ -1,0 +1,114 @@
+body {
+  position: relative;
+  margin: 30px;
+}
+
+body section {
+  position: absolute;
+  background-color: #ECECEC;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: 'Sora', sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+body section .top,
+body section .bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+body section .center #peace {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  height: 20%;
+}
+
+body section .center #circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  height: 45%;
+  -webkit-animation: turn 10s infinite;
+          animation: turn 10s infinite;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+body section .center #circle:hover {
+  height: 50%;
+  cursor: url("../images/hand_peace.png"), auto;
+}
+
+@-webkit-keyframes turn {
+  from {
+    -webkit-transform: translate(-50%, -50%) rotate(0deg);
+            transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    -webkit-transform: translate(-50%, -50%) rotate(360deg);
+            transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes turn {
+  from {
+    -webkit-transform: translate(-50%, -50%) rotate(0deg);
+            transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    -webkit-transform: translate(-50%, -50%) rotate(360deg);
+            transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+body section h3 {
+  display: inline-block;
+  font-weight: 500;
+  margin: 2em 2em;
+}
+
+body section h3 a {
+  color: #000;
+  text-decoration: none;
+  padding: .5em .5em;
+}
+
+body section h3 a .charHover {
+  color: lightcoral !important;
+}
+
+body section #mail:hover a {
+  cursor: url("../images/hand.png"), auto;
+}
+
+body section #impressum:hover a {
+  cursor: url("../images/hand.png"), auto;
+}
+/*# sourceMappingURL=main.css.map */

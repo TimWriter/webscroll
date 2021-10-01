@@ -1,0 +1,42 @@
+body {
+    position: relative;
+    margin: 30px;
+
+    section {
+        position: absolute;
+        background-color: #ECECEC;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        font-family: 'Sora',
+            sans-serif;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+
+
+        .top {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+
+            a {
+                display: inline-block;
+                font-weight: 500;
+                margin: 2em 2em;
+                color: #000;
+                text-decoration: none;
+                padding: .5em .5em;
+
+
+                cursor: url('../images/hand.png'),
+                    auto;
+
+            }
+        }
+
+        main {
+            margin: 0 2em;
+        }
+    }
+}
