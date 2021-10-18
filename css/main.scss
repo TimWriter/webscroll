@@ -31,6 +31,10 @@ body {
                 transform: translate(-50%, -50%);
                 height: 20%;
 
+                @media only screen and (max-width: 600px) {
+                    height: 15%;
+                }
+
             }
 
             #circle {
@@ -42,6 +46,10 @@ body {
                 animation: turn 10s infinite;
                 animation-timing-function: linear;
                 transition: .5s;
+
+                @media only screen and (max-width: 600px) {
+                    height: 30%;
+                }
 
                 &:hover {
                     height: 50%;
@@ -65,6 +73,10 @@ body {
             display: inline-block;
             font-weight: 500;
             margin: 2em 2em;
+
+            @media only screen and (max-width: 600px) {
+                margin: 1em .7em;
+            }
 
             a {
                 color: #000;
