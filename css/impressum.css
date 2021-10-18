@@ -20,6 +20,11 @@ body section {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+      hyphens: auto;
 }
 
 body section .top {

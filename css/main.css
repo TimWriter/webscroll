@@ -129,4 +129,8 @@ body section #mail:hover a {
 body section #impressum:hover a {
   cursor: url("../images/hand.png"), auto;
 }
+
+body section #copyright {
+  color: #bdbdbd;
+}
 /*# sourceMappingURL=main.css.map */
