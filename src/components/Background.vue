@@ -65,13 +65,13 @@ export default {
 
     @keyframes top {
         0%{
-            transform: translate(0, 0);
+            transform: translate(0, 0) scale(1);
         }
         50%{
-            transform: translate(-6%, 2%) scale(120%);
+            transform: translate(-6%, 2%) scale(1.2);
         }
         100%{
-            transform: translate(0, 0);
+            transform: translate(0, 0) scale(1);
         }
     }
 
@@ -85,7 +85,7 @@ export default {
         position: absolute;
         left: -5%;
         top: 50%;
-        animation: top 12s infinite;
+        animation: bottom 20s infinite;
         transition-duration: 2s;
 
         @media only screen and (max-width: 992px) {
@@ -104,19 +104,19 @@ export default {
 
     @keyframes bottom {
         0%{
-            transform: translate(0, 0);
+            transform: translate(0, 0) scale(1);
         }
         25%{
-            transform: translate(4%, -10%) scale(120%);
+            transform: translate(4%, -10%) scale(1.2);
         }
         50%{
-            transform: translate(0, 0) scale(100%);
+            transform: translate(0, 0) scale(1);
         }
         75%{
-            transform: translate(20%, -10%) scale(100%);            
+            transform: translate(20%, 0%) scale(1.2);            
         }
         100%{
-            transform: translate(0, 0) scale(100%);    
+            transform: translate(0, 0) scale(1);    
         }
     }
 

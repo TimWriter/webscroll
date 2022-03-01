@@ -1,7 +1,7 @@
 <template>
   <div class="swiper">
     <div class="images">
-      <img src="../assets/Carousel_1.png" alt="">
+      <img class="image" :style="{top: top + 'px'}" src="../assets/test.png" alt="">
     </div>
     <a href="" class="projects">
       <span>{{ $t("nav.project") }}</span>
@@ -12,6 +12,30 @@
 <script>
   export default {
     title: 'Swiper',
+    data(){
+      return{
+        viewport_height: '',
+        image_height: '',
+        img: '',
+        ratio: '',
+        top: 30,
+      }
+    },
+    created () {
+      window.addEventListener('scroll', this.handleScroll);
+    },
+    destroyed () {
+      window.removeEventListener('scroll', this.handleScroll);
+    },
+    methods: {
+      handleScroll () {
+        this.img = document.querySelectorAll('.images .image')[0];
+        this.image_height = this.img.clientHeight;
+        this.viewport_height = document.documentElement.clientHeight;
+        this.ratio = this.image_height / this.viewport_height;
+        this.top = 30 - (this.ratio / 3 * window.scrollY);
+      }
+    }
   }
 </script>
 
@@ -28,12 +52,16 @@
   .images{
     position: relative;
     height: 100%;
-    width: 100%;
+    width: 80%;
+    height: 21vw;
+    clip-path: inset(30px 30px 30px 30px round 100px 45px 100px 60px);
+    transform: translate(30px, 0);
 
     img{
       position: absolute;
-      width: 70%;
       right: 0;
+      top: 30px;
+      width: 100%;
       height: auto;
     }
   }
@@ -47,7 +75,7 @@
     border-radius: 50%;
     left: 25%;
     top: 15vw;
-    transition-duration: .2s;
+    transition-duration: .4s;
 
     span{
       position: absolute;
@@ -65,6 +93,10 @@
 
     &:hover{
       background-color: #fff;
+      height: 8vw;
+      width: 8vw;
+      left: calc(25% - 0.5vw);
+      top: 14.5vw;
     }
   }
 
