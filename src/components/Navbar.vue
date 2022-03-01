@@ -108,12 +108,12 @@ export default {
                 .hover{
                     height: 1.6em;
                     width: auto;
-                    transition: transform 0.4s ease;
+                    transition: transform 0.5s ease;
                     overflow: hidden;
 
                     a{
                         display: block;
-                        transition: .4s;
+                        transition: .5s;
 
                         &:hover{
                             color: #fff;

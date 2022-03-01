@@ -58,12 +58,21 @@ export default {
 
     .heading-container{
       grid-column: 1 / 2; 
-      grid-row: 1 / 3; 
+      grid-row: 1 / 3;
+      
+      @media only screen and (max-width: 992px) {
+            grid-column: 1 / 3; 
+            grid-row: 1 / 2;
+        }
 
       div{
         position: relative;
         top: 25%;
         transform: translate(0 -50%);
+
+        @media only screen and (max-width: 1600px) {
+            top: 30%;
+        }
       }
 
       h1{
@@ -71,12 +80,30 @@ export default {
         color: #fff;
         margin: 0;
         line-height: 1.3em;
+
+        @media only screen and (max-width: 1600px) {
+            font-size: 4vw;
+            line-height: 5vw;
+        }
+
+        @media only screen and (max-width: 992px) {
+            font-size: 7vw;
+            line-height: 8vw;
+        }
       }
 
       p{
         color: #E4E4E4;
         font-size: 2em;
         font-weight: 400;
+
+        @media only screen and (max-width: 1600px) {
+            font-size: 2vw;
+        }
+
+        @media only screen and (max-width: 992px) {
+            font-size: 3vw;
+        }
       }
     }
 
@@ -84,8 +111,17 @@ export default {
       grid-column:  2 / 3; 
       grid-row: 1 / 3; 
 
+      @media only screen and (max-width: 992px) {
+            grid-column: 1 / 3; 
+            grid-row: 2 / 3;
+        }
+
       .swiper{
         top: 25%;
+
+        @media only screen and (max-width: 1600px) {
+            top: 30%;
+        }
       }
     }
 
