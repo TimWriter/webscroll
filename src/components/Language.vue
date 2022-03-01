@@ -32,12 +32,17 @@ export default {
         width: 3.3em;
         height: 1.5em;
         border-radius: 0.8em;
+        color: #E4E4E4;
         border: 2px solid #E4E4E4;
         text-align: center;
         cursor: pointer;
         transition-duration: .2s;
 
         span{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             transition-duration: .2s;
         }
 
@@ -56,7 +61,7 @@ export default {
             border: 2px solid #fff;
 
             span{
-                margin-left: 22px;
+                left: calc(50% + 12px);
                 color: #fff;
             }
 

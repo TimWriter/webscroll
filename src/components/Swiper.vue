@@ -4,7 +4,10 @@
       <img class="image" :style="{top: top + 'px'}" src="../assets/test.png" alt="">
     </div>
     <a href="" class="projects">
-      <span>{{ $t("nav.project") }}</span>
+      <div class="link-container">
+        <span class="text-1">{{ $t("nav.project") }}</span>
+        <span class="text-2">{{ $t("nav.project") }}</span>
+      </div>
     </a>
   </div>
 </template>
@@ -77,6 +80,31 @@
     top: 15vw;
     transition-duration: .4s;
 
+    &:hover{
+      background-color: #fff;
+      height: 8vw;
+      width: 8vw;
+      left: calc(25% - 0.5vw);
+      top: 14.5vw;
+
+      .text-1{
+        transform: translate(-50%, -200%) rotate(20deg);
+      }
+      .text-2{
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+    }
+
+    .link-container{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 5vw;
+      height: 1.6vw;
+      overflow: hidden;
+    }
+
     span{
       position: absolute;
       top: 50%;
@@ -89,14 +117,16 @@
       -moz-user-select: none; /* Firefox */
       -ms-user-select: none; /* IE10+/Edge */
       user-select: none; /* Standard */
+      transition: transform 0.4s;
     }
 
-    &:hover{
-      background-color: #fff;
-      height: 8vw;
-      width: 8vw;
-      left: calc(25% - 0.5vw);
-      top: 14.5vw;
+    .text-1{
+      transform-origin: right center;
+    }
+
+    .text-2{
+      transform: translate(-50%, 100%) rotate(20deg);
+      transform-origin: left center;
     }
   }
 

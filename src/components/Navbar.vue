@@ -4,19 +4,25 @@
             <div class="logo"></div>
             <div class="links">
                 <ul>
-                    <li>
-                        <a href="">{{ $t("nav.about") }}</a>
+                    <li class="hover">
+                        <a class="link-1" href="">{{ $t("nav.about") }}</a>
+                        <a class="link-2" href="">{{ $t("nav.about") }}</a>
                     </li>
-                    <li>
-                        <a href="">{{ $t("nav.project") }}</a>
+                    <li class="hover">
+                        <a class="link-1" href="">{{ $t("nav.project") }}</a>
+                        <a class="link-2" href="">{{ $t("nav.project") }}</a>
                     </li>
-                    <li>
-                        <a href="">{{ $t("nav.contact") }}</a>
+                    <li class="hover">
+                        <a class="link-1" href="">{{ $t("nav.contact") }}</a>
+                        <a class="link-2" href="">{{ $t("nav.contact") }}</a>
                     </li>
-                    <li>
-                        <Language />
+                    <li id="placeholder">
+
                     </li>
                 </ul>
+                <div class="language-container">
+                    <Language />
+                </div>
             </div>
         </div>
   </header>
@@ -52,18 +58,32 @@ export default {
         }
 
         .links{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            position: relative;
             font-size: 1.2em;
             font-weight: 500;
+
+            .language-container{
+                position: absolute;
+                top: 50%;
+                transform: translate(0, -50%);
+                right: 0;
+            }
+
+            
+
             ul{
                 list-style: none;
                 color: #E4E4E4;
                 padding: 0;
                 margin: 0;
+                display: inline-block;
+                position: relative;
+                top: 50%;
+                transform: translate(0, -50%);
+                height: 1.6em;
 
                 li{
+                    position: relative;
                     padding: 0;
                     display: inline-block;
                     margin: 0 1em;
@@ -71,18 +91,53 @@ export default {
                     -moz-user-select: none; /* Firefox */
                     -ms-user-select: none; /* IE10+/Edge */
                     user-select: none; /* Standard */
-
-                    &:last-child{
-                        margin: 0 0 0 1em;
-                    }
+                    height: 1.6em;
 
                     a{
                         color: #E4E4E4;
                         text-decoration: none;
-                        transition-duration: .2s;
+                        transition-duration: .4s;
+                        position: relative;
+                    }
+                }
+
+                #placeholder{
+                    width: 2.5em;
+                }
+
+                .hover{
+                    height: 1.6em;
+                    width: auto;
+                    transition: transform 0.4s ease;
+                    overflow: hidden;
+
+                    a{
+                        display: block;
+                        transition: .4s;
 
                         &:hover{
                             color: #fff;
+                        }
+                    }
+
+                    .link-1{
+                        transform-origin: right center;
+                    }
+
+                    .link-2{
+                        position: absolute;
+                        top: 0;
+                        transform: translate(0, 2.1em) rotate(20deg);
+                        transform-origin: left center;
+                    }
+
+                    &:hover{
+                        .link-1{
+                            transform: translate(0, -2.1em) rotate(20deg);
+                        }
+                        .link-2{
+                            top: 0;
+                            transform: translate(0, 0) rotate(0deg);
                         }
                     }
                 }
