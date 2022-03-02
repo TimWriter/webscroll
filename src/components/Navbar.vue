@@ -62,6 +62,11 @@ export default {
             font-size: 1.2em;
             font-weight: 500;
 
+            @media only screen and (max-width: 992px) {
+                display: none;
+            }
+
+
             .language-container{
                 position: absolute;
                 top: 50%;

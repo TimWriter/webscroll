@@ -56,6 +56,14 @@ export default {
     grid-template-columns:50% 50%; 
     grid-template-rows: 50% 50%; 
 
+    @media only screen and (max-width: 992px) {
+            grid-template-rows: 45% 55%; 
+      }
+
+      @media only screen and (max-width: 400px) {
+            grid-template-rows: 42% 58%; 
+      }
+
     .heading-container{
       grid-column: 1 / 2; 
       grid-row: 1 / 3;
@@ -71,6 +79,10 @@ export default {
         transform: translate(0 -50%);
 
         @media only screen and (max-width: 1600px) {
+            top: 30%;
+        }
+
+        @media only screen and (max-width: 600px) {
             top: 30%;
         }
       }
@@ -90,6 +102,11 @@ export default {
             font-size: 7vw;
             line-height: 8vw;
         }
+
+        @media only screen and (max-width: 600px) {
+            font-size: 8.5vw;
+            line-height: 10vw;
+        }
       }
 
       p{
@@ -103,6 +120,9 @@ export default {
 
         @media only screen and (max-width: 992px) {
             font-size: 3vw;
+        }
+        @media only screen and (max-width: 600px) {
+            font-size: 4.5vw;
         }
       }
     }
@@ -122,6 +142,10 @@ export default {
         @media only screen and (max-width: 1600px) {
             top: 30%;
         }
+
+        @media only screen and (max-width: 992px) {
+            top: 0;
+        }
       }
     }
 
@@ -129,12 +153,26 @@ export default {
       position: absolute;
       top: 80%;
       left: 0;
+
+      @media only screen and (max-width: 992px) {
+            top: 90%;
+            font-size: .9em;
+      }
+      @media only screen and (max-width: 400px) {
+            top: 78%;
+            font-size: .8em;
+            width: 60%;
+      }
     }
 
     .scroll{
       position: absolute;
       top: 90%;
       left: 0;
+
+      @media only screen and (max-width: 992px) {
+            display: none;
+        }
     }
   }
 }
