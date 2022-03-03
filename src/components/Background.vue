@@ -35,6 +35,7 @@ export default {
         width: 100%;
         background-color: #000;
         overflow: hidden;
+        z-index: -1;
     }
 
     .hide-t{

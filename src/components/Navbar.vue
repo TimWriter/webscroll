@@ -4,9 +4,9 @@
             <div class="logo"></div>
             <div class="links">
                 <ul>
-                    <li class="hover">
-                        <a class="link-1" href="">{{ $t("nav.about") }}</a>
-                        <a class="link-2" href="">{{ $t("nav.about") }}</a>
+                    <li class="hover" @click="link('#about')">
+                        <a class="link-1" href="#">{{ $t("nav.about") }}</a>
+                        <a class="link-2" href="#">{{ $t("nav.about") }}</a>
                     </li>
                     <li class="hover">
                         <a class="link-1" href="">{{ $t("nav.project") }}</a>
@@ -36,6 +36,11 @@ export default {
     components: {
         Language
     },
+    methods: {
+        link(element){
+            this.$emit('scroll-event', element);
+        }
+    }
 }
 </script>
 

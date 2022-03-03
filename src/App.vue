@@ -2,7 +2,7 @@
   <div id="app">
     <div id="my-scrollbar">
       <div class="scroll-content">
-        <router-view />
+        <router-view @scroll-event="scrollTo" />
       </div>
       <div class="scrollbar-track scrollbar-track-x">
         <div class="scrollbar-thumb scrollbar-thumb-x"></div>
@@ -18,6 +18,11 @@
   import Scrollbar from 'smooth-scrollbar';
   import OverscrollPlugin from 'smooth-scrollbar/plugins/overscroll';
   export default {
+    data() {
+      return{
+        scrollBar: '',
+      }
+    },
     mounted() {
       const overscrollOptions = {
         enable: true,
@@ -26,8 +31,8 @@
         maxOverscroll: 100,
       };
       const options = {
-        damping: 0.1,
-        thumbMinSize: 20,
+        damping: 0.2,
+        thumbMinSize: 15,
         renderByPixels: true,
         alwaysShowTracks: false,
         continuousScrolling: true,
@@ -35,13 +40,18 @@
 
       Scrollbar.use(OverscrollPlugin);
 
-      Scrollbar.init(
+      this.scrollBar = Scrollbar.init(
         document.querySelector('#my-scrollbar'), {
         ...options, 
         plugins: {
           overscroll: { ...overscrollOptions }
         }
         });
+    },
+    methods: {
+      scrollTo(offset){
+        this.scrollBar.scrollTo(0, offset, 800);
+      }
     }
   }
 </script>
@@ -53,6 +63,11 @@
     background-color: #000;
     font-family: Poppins, sans-serif;
     font-size: 16px;
+  }
+
+  #my-scrollbar{
+    width: 100vw;
+    height: 100vh;
   }
 
   .scrollbar-track{
