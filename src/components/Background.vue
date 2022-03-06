@@ -32,6 +32,8 @@ export default {
 <style lang="scss" scoped>
     .background{
         position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
         background-color: #000;
         overflow: hidden;

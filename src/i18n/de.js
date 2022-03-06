@@ -15,32 +15,47 @@ const de = {
             about: 'Über uns',
             info_text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim neque, pellentesque ut nullam fermentum. Ultrices aliquet semper tortor, nulla penatibus. Nunc arcu rhoncus bibendum sagittis eget egestas eu. Morbi odio eget egestas adipiscing in odio.',
             heading: 'Von der Idee zur Website',
-            subheading: 'Unser Dienstleistungsangebot passt sich individuell Ihrem Projekt an.',
+            subheading: 'Unsere Dienstleistungen passen sich individuell Ihrem Projekt an.',
             cards: {
                 1: {
                     title: 'Produktdesign',
                     sub1: 'UI/UX Design',
                     sub2: 'Design Audits',
-                    sub3: 'Prototyping'
+                    sub3: 'Prototyping',
+                    lottie: 'https://assets1.lottiefiles.com/private_files/lf30_2cerar5e.json',
                 },
                 2: {
                     title: 'Entwicklung',
                     sub1: 'Techstack',
                     sub2: 'Web & Mobile Entwicklung',
-                    sub3: 'CMS'
+                    sub3: 'CMS',
+                    lottie: 'https://assets10.lottiefiles.com/private_files/lf30_batxdmc8.json',
                 },
                 3: {
                     title: 'Extras',
                     sub1: 'Erweiterungen',
                     sub2: 'Support',
-                    sub3: 'Marketing'
+                    sub3: 'Marketing',
+                    lottie: '',
                 },
             },
             spinner: 'ZUFRIEDENHEITSGARANTIE'
         },
         projects: {
             projects: 'Projekte'
+        },
+        contact: {
+            text: 'Interesse erweckt?',
+            button: 'Neues Projekt',
         }
+    },
+    contact: {
+        heading: 'Kommen wir ins Gespräch.',
+    },
+    footer: {
+        imprint: 'Impressum & Datenschutz',
+        copyright1: '© 2022 von Webscroll e.U.',
+        copyright2: 'Alle Rechte vorbehalten.',
     }
 }
 

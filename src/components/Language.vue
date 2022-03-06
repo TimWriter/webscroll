@@ -1,5 +1,5 @@
 <template>
-  <div class="language" @click="changeLanguage()">
+  <div class="language" @click="changeLanguage()" :class="colorClass">
       <div v-if="this.$i18n.locale === 'de'">
           <img src="../assets/GB.png" alt="Großbritannien Flagge">
           <span>en</span>
@@ -14,6 +14,7 @@
 <script>
 export default {
     name: 'Language',
+    props: ['colorClass'],
     methods: {
         changeLanguage(){
             if(this.$i18n.locale === 'de'){
@@ -68,6 +69,19 @@ export default {
             img{
                 height: 80%;
                 opacity: 1;
+            }
+        }
+    }
+
+    .purple{
+        color: #5D5CAB !important;
+        border: 2px solid #5D5CAB !important;
+
+        &:hover{
+            border: 2px solid #605eca !important;
+
+            span{
+                color: #605eca !important;
             }
         }
     }

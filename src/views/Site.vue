@@ -1,6 +1,5 @@
 <template>
   <div class="site" id="site">
-    <Navbar @scroll-event="scrollTo" />
     <Background :height="'115vh'" />
     <section id="home">
       <div class="heading-container">
@@ -23,6 +22,8 @@
         <h6>{{ $t("site.about.subheading") }}</h6>
         <div class="cards">
           <div class="card" v-for="item in $t('site.about.cards')" :key="item.id">
+            <div :id="item.title.toLowerCase() + '-icon'"></div>
+            <lottie-player :src="item.lottie" background="transparent" speed="1" loop autoplay></lottie-player>
             <h5>{{item.title}}</h5>
             <ul>
               <li>{{ item.sub1 }}</li>
@@ -70,7 +71,7 @@
             </div>
             <svg class="arrow" width="35" height="44" viewBox="0 0 35 44" fill="none"
               xmlns="http://www.w3.org/2000/svg">
-              <path d="M1 0.5V23.5L14.5 37H33.5M33.5" stroke-linejoin="round" stroke="white" stroke-width="2" />
+              <path d="M1 0V23L14.5 36.5H33.5" stroke-linejoin="round" stroke="white" stroke-width="2" />
               <path d="M1 31M33.5 37L27.5 31M33.5 37L27.5 43" stroke-linejoin="round" stroke="white" stroke-width="2" />
             </svg>
             <p class="project-info">
@@ -90,7 +91,7 @@
             </div>
             <svg class="arrow" width="35" height="44" viewBox="0 0 35 44" fill="none"
               xmlns="http://www.w3.org/2000/svg">
-              <path d="M1 0.5V23.5L14.5 37H33.5M33.5" stroke-linejoin="round" stroke="white" stroke-width="2" />
+              <path d="M1 0V23L14.5 36.5H33.5" stroke-linejoin="round" stroke="white" stroke-width="2" />
               <path d="M1 31M33.5 37L27.5 31M33.5 37L27.5 43" stroke-linejoin="round" stroke="white" stroke-width="2" />
             </svg>
             <p class="project-info">
@@ -98,26 +99,44 @@
             </p>
           </div>
         </div>
-
       </div>
+    </section>
+    <section id="contact">
+      <div class="text-container">
+        <p id="contact-text">{{ $t("site.contact.text") }}</p>
+      </div>
+      <div class="button" v-on:mouseover="mouseoverContact" v-on:mouseleave="mouseleaveContact" @click="clickContact">
+        <div class="text">
+          <div v-for="item in $t('site.contact.button').split(' ')" :key="item">
+            <span>{{item}}</span>
+            <span>{{item}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="hand">
+        <svg id="hand-svg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-index-thumb" viewBox="0 0 16 16">
+          <path d="M6.75 1a.75.75 0 0 1 .75.75V8a.5.5 0 0 0 1 0V5.467l.086-.004c.317-.012.637-.008.816.027.134.027.294.096.448.182.077.042.15.147.15.314V8a.5.5 0 0 0 1 0V6.435l.106-.01c.316-.024.584-.01.708.04.118.046.3.207.486.43.081.096.15.19.2.259V8.5a.5.5 0 1 0 1 0v-1h.342a1 1 0 0 1 .995 1.1l-.271 2.715a2.5 2.5 0 0 1-.317.991l-1.395 2.442a.5.5 0 0 1-.434.252H6.118a.5.5 0 0 1-.447-.276l-1.232-2.465-2.512-4.185a.517.517 0 0 1 .809-.631l2.41 2.41A.5.5 0 0 0 6 9.5V1.75A.75.75 0 0 1 6.75 1zM8.5 4.466V1.75a1.75 1.75 0 1 0-3.5 0v6.543L3.443 6.736A1.517 1.517 0 0 0 1.07 8.588l2.491 4.153 1.215 2.43A1.5 1.5 0 0 0 6.118 16h6.302a1.5 1.5 0 0 0 1.302-.756l1.395-2.441a3.5 3.5 0 0 0 .444-1.389l.271-2.715a2 2 0 0 0-1.99-2.199h-.581a5.114 5.114 0 0 0-.195-.248c-.191-.229-.51-.568-.88-.716-.364-.146-.846-.132-1.158-.108l-.132.012a1.26 1.26 0 0 0-.56-.642 2.632 2.632 0 0 0-.738-.288c-.31-.062-.739-.058-1.05-.046l-.048.002zm2.094 2.025z"/>
+        </svg>
+      </div>
+      <Footer :background="false"/>
     </section>
   </div>
 </template>
 <script>
   import Background from '../components/Background.vue';
-  import Navbar from '../components/Navbar.vue';
   import Cookies from '../components/Cookies.vue';
   import Scroll from '../components/Scroll.vue';
   import Swiper from '../components/Swiper.vue';
+  import Footer from '../components/Footer.vue';
 
   export default {
     name: 'Site',
     components: {
       Background,
-      Navbar,
       Cookies,
       Scroll,
-      Swiper
+      Swiper,
+      Footer
     },
     metaInfo() {
       return {
@@ -158,8 +177,27 @@
         gif.style.display = 'none';
         this.loveHover = false;
       },
-      scrollTo(element) {
-        this.$emit('scroll-event', document.querySelector(element).offsetTop);
+      mouseoverContact() {
+        let text = document.querySelector('#contact-text');
+        let hand = document.querySelector('.hand');
+        text.classList.add('hover');
+        hand.classList.add('hover');
+      },
+      mouseleaveContact() {
+        let text = document.querySelector('#contact-text');
+        let hand = document.querySelector('.hand');
+        text.classList.remove('hover');
+        hand.classList.remove('hover');
+      },
+      clickContact() {
+        let hand = document.querySelector('.hand');
+        let button = document.querySelector('.button');
+        hand.classList.add('click');
+        button.classList.add('btn-click');
+        setTimeout(() => {
+          this.$router.push('/contact');
+        }, 800);
+        
       }
     }
   }
@@ -308,7 +346,7 @@
       width: 80%;
       height: auto;
       background-color: #E4E4E4;
-      padding: 3em 10%;
+      padding: 5em 10%;
       border-radius: 5vw;
       margin: 7vh 0 0 0;
       overflow: hidden;
@@ -331,7 +369,7 @@
       h3 {
         font-weight: 600;
         font-size: 2.2em;
-        margin: 3em 0 0 0;
+        margin: 5em 0 0 0;
       }
 
       h6 {
@@ -349,6 +387,13 @@
         width: 100%;
 
         .card {
+
+          lottie-player{
+            position: relative;
+            width: 5em;
+            height: 5em;
+            margin-bottom: 1.5em;
+          }
 
           h5 {
             font-size: 1.6em;
@@ -371,7 +416,7 @@
       .spinner {
         position: absolute;
         right: 0%;
-        top: 55%;
+        top: 50%;
         width: 15%;
         max-width: 180px;
         border-radius: 50%;
@@ -450,6 +495,7 @@
       .projects-container {
         position: relative;
         margin-top: 4em;
+        margin-bottom: 6em;
         top: 0;
         transition: top .4s;
 
@@ -466,7 +512,7 @@
 
         &:nth-child(2n+0){
             .scrollContainer{
-              animation: scroll-negativ 50s linear infinite;
+              animation: scroll-negativ 45s linear infinite;
             }
             
           }
@@ -581,11 +627,166 @@
 
       @keyframes scroll-negativ {
         0% {
-          transform: translate(-100%, 0);
+          transform: translate(-80%, 0);
         }
 
         100% {
           transform: translate(0, 0);
+        }
+      }
+    }
+
+    //Contact
+    #contact{
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background: rgb(72,78,156);
+      background: linear-gradient(0deg, rgba(72,78,156,1) 0%, rgba(136,120,203,1) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+
+      .text-container{
+        position: absolute;
+        top: calc(50% - 8em);
+        left: 10%;
+        transform: translate(0, -50%);
+        color: #DDDDDD;
+        width: 40%;
+
+        p{
+          font-size: 8vw;
+          font-weight: 700;
+          line-height: 8vw;
+          transition-duration: .2s;
+        }
+        .hover{
+          color: #fff;
+        }
+      }
+
+      .button{
+        position: absolute;
+        top: 20%;
+        left: 60%;
+        width: 14em;
+        height: 14em;
+        border-radius: 50%;
+        background-color: #DDDDDD;
+        cursor: pointer;
+        transition: .4s;
+
+
+        .text{
+          color: #5C5AA4;
+          font-weight: 700;
+          font-size: 2em;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+          text-align: center;
+          div{
+            position: relative;
+            display: block;
+            line-height: 1.4em;
+            width: 4em;
+            height: 1.4em;
+            overflow: hidden;
+
+            span{
+              position: absolute;
+              left: 50%;
+              top: 0;
+              transition: .4s;
+
+              &:nth-child(1){
+                transform: translate(-50%, 0);
+                transform-origin: right center;
+              }
+
+              &:nth-child(2){
+                transform: translate(-50%, 125%) rotate(25deg);
+                transform-origin: left center;
+              }
+            }
+          }
+        }
+
+        &:hover{
+          width: 15em;
+          height: 15em;
+          top: calc(20% - .5em);
+          left: calc(60% - .5em);
+          background-color: #fff;
+
+          .text{
+            div{
+              span{
+                &:nth-child(1){
+                  transform: translate(-50%, -125%) rotate(25deg);
+                }
+
+                &:nth-child(2){
+                  transform: translate(-50%, 0) rotate(0deg);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .btn-click{
+        transition-delay: .3s;
+        box-shadow: inset 0 0 10px #000000;
+      }
+
+      .hand{
+        position: absolute;
+        width: 14em;
+        height: 14em;
+        top: calc(30% + 6em);
+        left: calc(70% + 6em);
+        pointer-events: none;
+        transition: .4s;
+        svg{
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          width: 50%;
+          height: auto;
+          transform: rotate(-45deg);
+          fill: #fff;
+          filter: drop-shadow( 0px 0px 3px rgba(0, 0, 0, .7));
+          opacity: 0;
+          transition: .4s;
+        }
+      }
+
+      .hover{
+        top: calc(20% + 6em);
+        left: calc(60% + 6em);
+        svg{
+          opacity: 1;
+        }    
+      }
+      .click{
+        animation: click .4s ease forwards;
+      }
+
+      @keyframes click {
+        0%{
+          top: calc(20% + 6em);
+          left: calc(60% + 6em);
+        }
+        70%{
+          transform: scale(1);
+        }
+        100%{
+          top: calc(20% + 3em);
+          left: calc(60% + 3em);
+          transform: scale(.98);
         }
       }
     }

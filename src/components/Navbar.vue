@@ -1,5 +1,5 @@
 <template>
-    <header class="navbar">
+    <header class="navbar" :class="colorClass">
         <div class="flex">
             <div class="logo"></div>
             <div class="links">
@@ -8,11 +8,11 @@
                         <a class="link-1" href="#">{{ $t("nav.about") }}</a>
                         <a class="link-2" href="#">{{ $t("nav.about") }}</a>
                     </li>
-                    <li class="hover">
-                        <a class="link-1" href="">{{ $t("nav.project") }}</a>
-                        <a class="link-2" href="">{{ $t("nav.project") }}</a>
+                    <li class="hover" @click="link('#projects')">
+                        <a class="link-1" href="#">{{ $t("nav.project") }}</a>
+                        <a class="link-2" href="#">{{ $t("nav.project") }}</a>
                     </li>
-                    <li class="hover">
+                    <li class="hover" @click="$router.push('/contact')">
                         <a class="link-1" href="">{{ $t("nav.contact") }}</a>
                         <a class="link-2" href="">{{ $t("nav.contact") }}</a>
                     </li>
@@ -21,7 +21,7 @@
                     </li>
                 </ul>
                 <div class="language-container">
-                    <Language />
+                    <Language :colorClass="colorClass" />
                 </div>
             </div>
         </div>
@@ -33,6 +33,7 @@ import Language from './Language.vue';
 
 export default {
     name: 'Navbar',
+    props: ['colorClass'],
     components: {
         Language
     },
@@ -52,7 +53,8 @@ export default {
         width: 100%;
         height: 100px;
         z-index: 10;
-
+        background: rgb(0,0,0);
+        background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.20) 50%, rgba(0,0,0,0.5) 100%);
         .flex{
             position: relative;
             width: 80%;
@@ -151,6 +153,20 @@ export default {
                         }
                     }
                 }
+            }
+        }
+    }
+
+    .purple{
+        background: none !important;
+        backdrop-filter: blur(3px);
+        a{
+            color: #5D5CAB !important;
+        }
+
+        .hover{
+            a:hover{
+                color: #605eca !important;
             }
         }
     }
