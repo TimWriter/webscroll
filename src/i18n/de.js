@@ -51,6 +51,15 @@ const de = {
     },
     contact: {
         heading: 'Kommen wir ins Gespräch.',
+        oldschool: 'Nicht persönlich genug?',
+        name: 'Name',
+        email: 'E-Mail',
+        message: 'Nachricht',
+        phone: 'Telefon',
+        terms: 'Ich akzeptiere die Verarbeitung meiner Daten',
+        newsletter: 'Anmeldung zum Newsletter',
+        validation: 'Bitte wählen Sie die Zahlen in aufsteigender Reihenfolge aus.'
+
     },
     footer: {
         imprint: 'Impressum & Datenschutz',
