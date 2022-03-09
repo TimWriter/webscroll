@@ -58,7 +58,9 @@ const de = {
         phone: 'Telefon',
         terms: 'Ich akzeptiere die Verarbeitung meiner Daten',
         newsletter: 'Anmeldung zum Newsletter',
-        validation: 'Bitte wählen Sie die Zahlen in aufsteigender Reihenfolge aus.'
+        validation: 'Bitte wählen Sie die Zahlen in aufsteigender Reihenfolge aus.',
+        validation_wrong: 'Menschen machen Fehler... <br> Um zu garantieren, dass Sie kein Roboter sind müssen Sie es jedoch nochmals probieren.',
+        validation_success: 'Glückwunsch! Neun von zehn Robotern scheitern an diesem Test.'
 
     },
     footer: {

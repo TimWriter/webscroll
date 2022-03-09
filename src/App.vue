@@ -34,7 +34,7 @@
       const overscrollOptions = {
         enable: true,
         effect: 'bounce',
-        damping: 0.15,
+        damping: 0.3,
         maxOverscroll: 100,
       };
       const options = {

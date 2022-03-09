@@ -104,6 +104,7 @@ export default {
                     -ms-user-select: none; /* IE10+/Edge */
                     user-select: none; /* Standard */
                     height: 1.6em;
+                    cursor: pointer;
 
                     a{
                         color: #E4E4E4;
@@ -159,7 +160,6 @@ export default {
 
     .purple{
         background: none !important;
-        backdrop-filter: blur(3px);
         a{
             color: #5D5CAB !important;
         }
