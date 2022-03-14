@@ -136,6 +136,9 @@ export default {
         position: absolute;
         width: 100%;
         height: 100%;
-        backdrop-filter: blur(65px);
+        filter: blur(65px);
+        @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+            backdrop-filter: blur(65px);
+        }
     }
 </style>>

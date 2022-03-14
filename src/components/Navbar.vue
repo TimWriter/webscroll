@@ -1,7 +1,11 @@
 <template>
     <header class="navbar" :class="colorClass">
         <div class="flex">
-            <div class="logo"></div>
+            <div class="logo">
+                <video id='icon' autoplay loop="loop" muted defaultmuted playsinline>
+                    <source src="<%= BASE_URL %>/assets/logo_small_vp9.webm" type="video/webm">
+                </video>
+            </div>
             <div class="links">
                 <ul>
                     <li class="hover" @click="link('#about')">
@@ -37,9 +41,23 @@ export default {
     components: {
         Language
     },
+    mounted() {
+        const video = document.querySelector('video');
+
+        video.addEventListener('timeupdate', () => {
+            if(video.currentTime > 11.64){
+                console.log('reset');
+                video.currentTime = 0.1;
+                video.play();
+            }
+        });
+    },
     methods: {
         link(element){
             this.$emit('scroll-event', element);
+        },
+        restartVideo(e){
+            console.log(e.target);
         }
     }
 }
@@ -62,6 +80,20 @@ export default {
             margin: 0 10%;
             display: flex;
             justify-content: space-between;
+        }
+
+        .logo{
+            position: relative;
+            height: 100%;
+            cursor: pointer;
+
+            #icon{
+                position: relative;
+                height: 60%;
+                width: auto;
+                top: 50%;
+                transform: translate(0, -50%);
+            }
         }
 
         .links{
