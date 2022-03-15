@@ -60,7 +60,16 @@ const de = {
         newsletter: 'Anmeldung zum Newsletter',
         validation: 'Bitte wählen Sie die Zahlen in aufsteigender Reihenfolge aus.',
         validation_wrong: 'Menschen machen Fehler... <br> Um zu garantieren, dass Sie kein Roboter sind müssen Sie es jedoch nochmals probieren.',
-        validation_success: 'Glückwunsch! Neun von zehn Robotern scheitern an diesem Test.'
+        validation_success: 'Glückwunsch! Neun von zehn Robotern scheitern an diesem Test.',
+        send: 'SENDEN',
+        errors: {
+            name: 'Bitte nenne Sie uns Ihren Namen.',
+            email: 'Sie haben vergessen Ihre E-Mail Adresse anzugeben.',
+            multiple: 'Nicht so hastig! Füllen Sie zuerst das Formular aus und drücken Sie dann erneut auf SENDEN.',
+            terms: 'Bitte akzeptieren Sie die Verarbeitung Ihrer Daten.',
+            verify: 'Sind Sie ein Roboter? Falls nicht lösen Sie bitte das Zahlenrätsel.'
+        },
+        sent: 'Vielen Dank für Ihre Nachricht, wir melden uns in Kürze.'
 
     },
     footer: {

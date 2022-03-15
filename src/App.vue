@@ -12,105 +12,119 @@
         <div class="scrollbar-thumb scrollbar-thumb-y"></div>
       </div>
     </div>
-    
   </div>
 </template>
 
 <script>
-  import Scrollbar from 'smooth-scrollbar';
-  import OverscrollPlugin from 'smooth-scrollbar/plugins/overscroll';
-  import Navbar from './components/Navbar.vue';
-  export default {
-    components: {
-      Navbar
-    },
-    data() {
-      return {
-        scrollBar: '',
-        navcolor: '',
+import Scrollbar from "smooth-scrollbar";
+import OverscrollPlugin from "smooth-scrollbar/plugins/overscroll";
+import Navbar from "./components/Navbar.vue";
+export default {
+  components: {
+    Navbar,
+  },
+  data() {
+    return {
+      scrollBar: "",
+      navcolor: "",
+    };
+  },
+  mounted() {
+    const overscrollOptions = {
+      enable: true,
+      effect: "bounce",
+      damping: 0.3,
+      maxOverscroll: 100,
+    };
+    const options = {
+      damping: 0.15,
+      thumbMinSize: 15,
+      renderByPixels: true,
+      alwaysShowTracks: false,
+      continuousScrolling: true,
+    };
+
+    Scrollbar.use(OverscrollPlugin);
+
+    this.scrollBar = Scrollbar.init(
+      document.querySelector("#scroll-container"),
+      {
+        ...options,
+        plugins: {
+          overscroll: {
+            ...overscrollOptions,
+          },
+        },
       }
-    },
-    mounted() {
-      const overscrollOptions = {
-        enable: true,
-        effect: 'bounce',
-        damping: 0.3,
-        maxOverscroll: 100,
-      };
-      const options = {
-        damping: 0.15,
-        thumbMinSize: 15,
-        renderByPixels: true,
-        alwaysShowTracks: false,
-        continuousScrolling: true,
-      };
+    );
 
-      Scrollbar.use(OverscrollPlugin);
-
-      this.scrollBar = Scrollbar.init(
-        document.querySelector('#scroll-container'), {
-          ...options,
-          plugins: {
-            overscroll: {
-              ...overscrollOptions
-            }
-          }
-        });
-
-      //Change color on About
-      if(this.$route.name == 'Site'){
-        let about = document.querySelector('#about')
-        let element_offset = about.offsetTop * 0.95;
-        let element_height = about.offsetHeight;
-        this.scrollBar.addListener(() =>{
-          if(this.scrollBar.offset.y >= element_offset){
-            this.navcolor = 'purple';
-          } else if (this.navcolor == 'purple'){
-            this.navcolor = '';
-          }
-          if(this.scrollBar.offset.y >= (element_offset + element_height)){
-            this.navcolor = '';
-          }
-        });
-      }
-    },
-    methods: {
-      scrollTo(element) {
+    //Change color on About
+    if (this.$route.name == "Site") {
+      this.aboutChangeColor();
+    }
+  },
+  methods: {
+    scrollTo(element) {
+      if (this.$route.name == "Site") {
         let element_offset = document.querySelector(element).offsetTop;
         this.scrollBar.scrollTo(0, element_offset, 800);
-      },
-    },
-    watch: {
-      '$route' () {
-        this.scrollBar.scrollTo(0, 0, 0);
+      } else {
+        this.$router.push("/");
       }
-    }
-  }
+    },
+
+    aboutChangeColor() {
+      let about = document.querySelector("#about");
+      let element_offset = about.offsetTop * 0.95;
+      let element_height = about.offsetHeight;
+      this.scrollBar.addListener(() => {
+        if (this.scrollBar.offset.y >= element_offset) {
+          this.navcolor = "purple";
+        } else if (this.navcolor == "purple") {
+          this.navcolor = "";
+        }
+        if (this.scrollBar.offset.y >= element_offset + element_height) {
+          this.navcolor = "";
+        }
+      });
+    },
+  },
+  watch: {
+    $route() {
+      this.scrollBar.scrollTo(0, 0, 0);
+      window.addEventListener("load", function () {
+        if (this.$route.name == "Site") {
+          this.aboutChangeColor();
+        }
+      });
+    },
+  },
+};
 </script>
 
 <style lang="scss">
-  body {
-    margin: 0;
-    padding: 0;
-    background-color: #000;
-    font-family: Poppins, sans-serif;
-    font-size: 16px;
-  }
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  font-family: Poppins, sans-serif;
+  font-size: 16px;
+}
 
-  #scroll-container {
-    width: 100vw;
-    height: 100vh;
-  }
+#scroll-container {
+  width: 100vw;
+  height: 100vh;
+}
 
-  .scrollbar-track {
-    background-color: rgba(0, 0, 0, 0.479) !important;
-  }
+.scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.479) !important;
+}
 
-  .scrollbar-thumb {
-    background-color: #E4E4E4 !important;
+.scrollbar-thumb {
+  background-color: #e4e4e4 !important;
 
-    &:hover {
-      background-color: #FFFFFF !important;
-    }
+  &:hover {
+    background-color: #ffffff !important;
   }
+}
 </style>

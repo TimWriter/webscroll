@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Site from '../views/Site.vue'
 import Contact from '../views/Contact.vue'
+import ContactSend from '../views/Contact-Send.vue'
 
 Vue.use(VueRouter)
 
@@ -15,6 +16,11 @@ const routes = [
     path: '/contact',
     name: 'Contact',
     component: Contact
+  },
+  {
+    path: '/message-success',
+    name: 'Contact-Send',
+    component: ContactSend
   },
 ]
 
