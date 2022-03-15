@@ -90,7 +90,10 @@
             <label for="newsletter">{{ $t("contact.newsletter") }}</label>
           </div>
           <div class="validation">
-            <p>{{ $t("contact.validation") }}</p>
+            <p>
+              {{ $t("contact.validation") }}
+              <Tooltip :text="$t('contact.tooltip')" />
+            </p>
             <div class="numbers">
               <div
                 class="number"
@@ -165,7 +168,7 @@
                 fill-rule="evenodd"
                 clip-rule="evenodd"
                 d="M220.619 0.0416493C319.405 -1.48562 419.197 38.9973 449.97 120.36C480.948 202.263 428.612 286.39 348.034 336.916C268.008 387.096 160.445 402.347 80.5628 351.994C0.79567 301.714 -17.0134 207.89 15.1435 127.082C45.4691 50.8759 127.615 1.47953 220.619 0.0416493Z"
-                fill="#0D0D0D"
+                fill="#0E0E0E"
               />
               <defs></defs>
             </svg>
@@ -197,6 +200,7 @@ import emailjs from "@emailjs/browser";
 import Background from "../components/Background.vue";
 import Footer from "../components/Footer.vue";
 import Button from "../components/Button.vue";
+import Tooltip from "../components/Tooltip.vue";
 
 export default {
   name: "Contact",
@@ -204,6 +208,7 @@ export default {
     Background,
     Footer,
     Button,
+    Tooltip,
   },
   data() {
     return {
@@ -235,6 +240,9 @@ export default {
     this.height =
       container.clientHeight +
       parseFloat(getComputedStyle(container).fontSize) * 20;
+    if (this.height < window.innerHeight) {
+      this.height = window.innerHeight;
+    }
     console.log(this.height);
   },
   methods: {
