@@ -1,5 +1,5 @@
 <template>
-  <button class="reuseable-button" :style="cssVars">
+  <button @click="click" class="reuseable-button" :style="cssVars">
     <div class="text-container" v-if="!sending">
       <span>{{ text }}</span>
       <span>{{ text }}</span>
@@ -29,6 +29,11 @@ export default {
         "--sizeHover": this.sizeHover + "em",
         "--fontSize": this.fontSize,
       };
+    },
+  },
+  methods: {
+    click() {
+      this.$emit("button-click");
     },
   },
 };
@@ -66,6 +71,7 @@ export default {
       transform-origin: right center;
       transform: translate(-50%, -50%) rotate(0deg);
       transition-duration: 0.5s;
+      color: #000;
     }
     span:nth-child(2) {
       position: absolute;
@@ -74,6 +80,7 @@ export default {
       transform-origin: left center;
       transform: translate(-50%, 80%) rotate(20deg);
       transition-duration: 0.5s;
+      color: #000;
     }
   }
 

@@ -68,6 +68,11 @@ export default {
     rgba(0, 0, 0, 0.2) 50%,
     rgba(0, 0, 0, 0.5) 100%
   );
+
+  @media only screen and (max-width: 600px) {
+    height: 80px;
+  }
+
   .flex {
     position: relative;
     width: 80%;
@@ -81,6 +86,10 @@ export default {
     position: relative;
     height: 100%;
     cursor: pointer;
+
+    @media only screen and (max-width: 600px) {
+      font-size: 12px;
+    }
 
     #icon {
       position: absolute;

@@ -168,7 +168,7 @@
                 fill-rule="evenodd"
                 clip-rule="evenodd"
                 d="M220.619 0.0416493C319.405 -1.48562 419.197 38.9973 449.97 120.36C480.948 202.263 428.612 286.39 348.034 336.916C268.008 387.096 160.445 402.347 80.5628 351.994C0.79567 301.714 -17.0134 207.89 15.1435 127.082C45.4691 50.8759 127.615 1.47953 220.619 0.0416493Z"
-                fill="#0E0E0E"
+                fill="#1E1E1E"
               />
               <defs></defs>
             </svg>
@@ -236,14 +236,25 @@ export default {
     }
 
     //Background-height
-    let container = document.querySelector(".container");
-    this.height =
-      container.clientHeight +
-      parseFloat(getComputedStyle(container).fontSize) * 20;
-    if (this.height < window.innerHeight) {
-      this.height = window.innerHeight;
+    function setHeight(that) {
+      let container = document.querySelector(".container");
+      that.height =
+        container.clientHeight * 1.1 +
+        parseFloat(getComputedStyle(container).fontSize) * 20;
+      if (that.height < window.innerHeight) {
+        that.height = window.innerHeight;
+      }
     }
-    console.log(this.height);
+
+    setHeight(this);
+
+    let oldWidth = document.querySelector(".container").clientWidth;
+    setInterval(() => {
+      if (document.querySelector(".container").clientWidth != oldWidth) {
+        oldWidth = document.querySelector(".container").clientWidth;
+        setHeight(this);
+      }
+    }, 300);
   },
   methods: {
     clickedNumber(index) {
@@ -350,11 +361,19 @@ export default {
     height: auto;
     margin: 10em 10%;
 
+    @media only screen and (max-width: 600px) {
+      font-size: 12px;
+    }
+
     .flex {
       position: relative;
       width: 100%;
       display: flex;
       flex-direction: row;
+
+      @media only screen and (max-width: 1400px) {
+        flex-direction: column;
+      }
 
       .form {
         flex-grow: 1;
@@ -365,6 +384,15 @@ export default {
           font-size: 4em;
           width: 80%;
           line-height: 1.2em;
+          @media only screen and (max-width: 1400px) {
+            margin: 0 0 1em 10%;
+          }
+
+          @media only screen and (max-width: 600px) {
+            width: 100%;
+            margin: 0 0 1em 0;
+            font-size: 3em;
+          }
         }
 
         .input {
@@ -380,6 +408,15 @@ export default {
           margin: 1.2em 0;
           border-radius: 1.8em;
           backdrop-filter: blur(3px);
+
+          @media only screen and (max-width: 1400px) {
+            margin: 1.2em 0 1.2em 10%;
+          }
+
+          @media only screen and (max-width: 600px) {
+            width: 100%;
+            margin: 1.2em 0;
+          }
 
           input {
             margin: 0;
@@ -397,6 +434,7 @@ export default {
 
             &:-webkit-autofill {
               -webkit-background-clip: text;
+              background-clip: text;
               -webkit-text-fill-color: white !important;
             }
           }
@@ -441,6 +479,15 @@ export default {
           margin: 1.3em 0;
           border-radius: 1.8em;
           backdrop-filter: blur(3px);
+
+          @media only screen and (max-width: 1400px) {
+            margin: 1.3em 0 1.3em 10%;
+          }
+
+          @media only screen and (max-width: 600px) {
+            width: 100%;
+            margin: 1.3em 0;
+          }
 
           textarea {
             margin: 0;
@@ -491,6 +538,15 @@ export default {
           width: 80%;
           margin-bottom: 1em;
 
+          @media only screen and (max-width: 1400px) {
+            margin: 0 0 1.3em 10%;
+          }
+
+          @media only screen and (max-width: 600px) {
+            width: 100%;
+            margin: 1.3em 0;
+          }
+
           input {
             -webkit-appearance: none;
             background: rgb(255, 255, 255);
@@ -524,6 +580,7 @@ export default {
             margin: 0 0 0 2.5em;
             user-select: none;
             transition-duration: 0.2s;
+            display: inline-block;
 
             &:hover {
               color: #fff;
@@ -567,6 +624,15 @@ export default {
           color: #fff;
           font-size: 1.2em;
           margin-top: 2.5em;
+
+          @media only screen and (max-width: 1400px) {
+            margin: 2.5em 0 0 10%;
+          }
+
+          @media only screen and (max-width: 600px) {
+            width: 100%;
+            margin: 4em 0 2.5em 0;
+          }
 
           p {
             margin: 0;
@@ -653,6 +719,15 @@ export default {
           height: 8em;
           margin: 2em 0;
 
+          @media only screen and (max-width: 1400px) {
+            margin: 2em 0 2em 10%;
+          }
+
+          @media only screen and (max-width: 600px) {
+            width: 100%;
+            margin: 2em 0;
+          }
+
           .errors {
             position: absolute;
             display: block;
@@ -699,6 +774,15 @@ export default {
           position: relative;
           width: 100%;
 
+          @media only screen and (max-width: 1400px) {
+            width: 60%;
+            margin: 5em auto;
+          }
+
+          @media only screen and (max-width: 600px) {
+            width: 100%;
+          }
+
           svg {
             width: 100%;
             height: auto;
@@ -710,7 +794,15 @@ export default {
             top: 50%;
             transform: translate(-50%, -50%);
             width: 60%;
-            font-size: 100%;
+            font-size: 0.8vw;
+
+            @media only screen and (max-width: 1400px) {
+              font-size: 1.2vw;
+            }
+
+            @media only screen and (max-width: 600px) {
+              font-size: 2.4vw;
+            }
 
             h2 {
               color: #fff;

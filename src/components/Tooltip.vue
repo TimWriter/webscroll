@@ -61,5 +61,12 @@ export default {
       transform: translate(-50%, -120%) scale(1);
     }
   }
+
+  &:active {
+    .tip {
+      opacity: 1;
+      transform: translate(-50%, -120%) scale(1);
+    }
+  }
 }
 </style>
