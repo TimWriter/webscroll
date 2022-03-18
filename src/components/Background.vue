@@ -61,9 +61,8 @@ export default {
   top: -10%;
   animation: top 20s infinite;
   transition-duration: 2s;
-  @supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
-    filter: blur(60px);
-  }
+
+  filter: blur(60px);
 
   @media only screen and (max-width: 992px) {
     width: 50%;
@@ -102,9 +101,8 @@ export default {
   top: 50%;
   animation: bottom 20s infinite;
   transition-duration: 2s;
-  @supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
-    filter: blur(60px);
-  }
+
+  filter: blur(60px);
 
   @media only screen and (max-width: 992px) {
     width: 65%;
@@ -155,8 +153,5 @@ export default {
   position: absolute;
   width: 100%;
   height: 100%;
-  @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
-    backdrop-filter: blur(65px);
-  }
 }
 </style>>

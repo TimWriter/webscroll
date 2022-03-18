@@ -42,6 +42,7 @@
             </ul>
           </div>
         </div>
+        <Products />
         <img src="../assets/love.gif" alt="Lustige Gif" id="lovegif" />
         <div
           class="spinner"
@@ -188,6 +189,7 @@ import Background from "../components/Background.vue";
 import Cookies from "../components/Cookies.vue";
 import Scroll from "../components/Scroll.vue";
 import Swiper from "../components/Swiper.vue";
+import Products from "../components/Products.vue";
 import Footer from "../components/Footer.vue";
 
 export default {
@@ -197,6 +199,7 @@ export default {
     Cookies,
     Scroll,
     Swiper,
+    Products,
     Footer,
   },
   metaInfo() {
@@ -426,7 +429,7 @@ export default {
     }
 
     @media only screen and (max-width: 600px) {
-      padding: 2em 10%;
+      padding: 2em 10% 10vw 10%;
     }
 
     div {
@@ -475,9 +478,7 @@ export default {
       justify-content: space-between;
       width: 100%;
       @media only screen and (max-width: 992px) {
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        margin: 1em 0 3em 0;
+        display: none;
       }
 
       .card {
