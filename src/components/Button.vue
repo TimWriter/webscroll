@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  props: ["size", "sizeHover", "fontSize", "text", "sending"],
+  props: ["size", "sizeHover", "fontSize", "text", "fontWeight", "sending"],
   data() {
     return {};
   },
@@ -28,6 +28,7 @@ export default {
         "--size": this.size + "em",
         "--sizeHover": this.sizeHover + "em",
         "--fontSize": this.fontSize,
+        "--fontWeight": this.fontWeight || '500',
       };
     },
   },
@@ -63,6 +64,7 @@ export default {
     text-align: center;
     overflow: hidden;
     user-select: none;
+    font-weight: var(--fontWeight);
 
     span:nth-child(1) {
       position: absolute;

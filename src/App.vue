@@ -128,7 +128,7 @@ export default {
     },
 
     aboutChangeColor() {
-      let about = document.querySelector("#about");
+      let about = document.querySelector("#services");
       let element_offset = about.offsetTop * 0.95;
       let element_height = about.offsetHeight;
       if (this.device != "mobile") {

@@ -1,20 +1,31 @@
 const de = {
     nav: {
-        about: 'Über uns',
+        services: 'Leistungen',
         project: 'Projekte',
         contact: 'Kontakt'
     },
     site: {
-        home:{
+        home: {
             h1: 'Bei uns ist Ihre Idee in guten Händen.',
             p: 'Wir sind ein junges, kreatives, Entwicklungsstudio aus Wien.',
+            price: 'ab €800*',
             cookies: 'Diese Website benutzt Cookies.',
             accept: 'Akzeptieren',
         },
-        about:{
-            about: 'Über uns',
-            info_text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim neque, pellentesque ut nullam fermentum. Ultrices aliquet semper tortor, nulla penatibus. Nunc arcu rhoncus bibendum sagittis eget egestas eu. Morbi odio eget egestas adipiscing in odio.',
-            heading: 'Von der Idee zur Website',
+        services: {
+            services: 'Leistungen',
+            info_text: `
+                        <u>Unser Angebot:</u><br> <span>Ihr digitaler Unternehmensauftritt zu einem fairen Preis.</span><br>
+
+                        Dabei richtet sich unser Hauptaugenmerk auf Ihre Wünsche. Egal ob einfacher Unternehmensauftritt, Onlineshop oder Webapp – bei uns sind Sie bestens beraten.<br>
+                        Unsere Websites helfen Unternehmen sich von der Masse an Mitbewerbern abzuheben und das zu bodenständigen Preisen.<br><br>
+
+                        Doch nicht nur Ihr Unternehmen sticht zukünftig heraus, denn auch wir weichen bereits im hier und jetzt von der Masse ab. 
+                        Bei uns bekommen Sie keine nullachtfünfzehn Wordpressseite, keine Vorlagen, in die lediglich Ihr Firmenlogo integriert wurde. <br>
+                        Unser Fokus liegt auf dem Entwerfen von einzigartigen Website, nicht dem Verkauf von Templates. 
+            `,
+            request: 'UNVERBINDLICH ANFRAGEN',
+            heading: 'Darf\'s ein bisschen mehr sein?',
             subheading: 'Unsere Dienstleistungen passen sich individuell Ihrem Projekt an.',
             cards: {
                 1: {
@@ -26,20 +37,53 @@ const de = {
                 },
                 2: {
                     title: 'Entwicklung',
-                    sub1: 'Techstack',
+                    sub1: 'Kompletter Techstack',
                     sub2: 'Web & Mobile Entwicklung',
                     sub3: 'CMS',
                     lottie: 'https://assets10.lottiefiles.com/private_files/lf30_batxdmc8.json',
                 },
                 3: {
                     title: 'Extras',
-                    sub1: 'Erweiterungen',
-                    sub2: 'Support',
+                    sub1: 'Hosting',
+                    sub2: 'Wartung',
                     sub3: 'Marketing',
-                    lottie: 'https://assets10.lottiefiles.com/private_files/lf30_batxdmc8.json',
+                    lottie: 'https://assets5.lottiefiles.com/private_files/lf30_qvdvidq6.json',
                 },
             },
-            spinner: 'ZUFRIEDENHEITSGARANTIE'
+            cardsButton:'UNSER DIENSTLEISTUNGSANGEBOT',
+            spinner: 'ZUFRIEDENHEITSGARANTIE',
+            products_heading: 'Unsere Produktpakete',
+            products_subheading: 'Hier finden Sie eine Auswahl an beliebten Dienstleistungen zum Fixpreis.',
+            price_info: '* sämtliche Preise verstehen sich als Endpreise',
+            products: {
+                1: {
+                    title: 'Onepager',
+                    text1: 'Klein, aber oho!',
+                    text2: 'Eine Seite, die Ihr Projekt, Event oder Ihre Kampagne im Internet repräsentiert. Zudem ideal als Landingpage für Unternehmen.',
+                    price: 'ab 800€*',
+                    link: '/',
+                    button: 'MEHR DAZU',
+                    lottie: 'https://assets10.lottiefiles.com/private_files/lf30_ndiqey5b.json',
+                },
+                2: {
+                    title: 'Website',
+                    text1: 'Der Klassiker.',
+                    text2:  'Wieso mit einer Seite begnügen? Eine umfangreiche Website bringt Ihren Kunden noch mehr Vergnügen.',
+                    price: 'ab 1600€*',
+                    link: '/',
+                    button: 'MEHR DAZU',
+                    lottie: 'https://assets1.lottiefiles.com/private_files/lf30_gvzcrdpr.json',
+                },
+                3: {
+                    title: 'Webshop',
+                    text1: 'Hier wird (ab)geliefert.',
+                    text2:  'Durch einen von uns erstellten Shops werden Ihre Produkte zum Kassenschlager. Setzen Sie auf unsere E-Commerce Expertise.',
+                    price: 'ab 2800€*',
+                    link: '/',
+                    button: 'MEHR DAZU',
+                    lottie: 'https://assets2.lottiefiles.com/packages/lf20_xxlopc4j.json',
+                },
+            },
         },
         projects: {
             projects: 'Projekte'

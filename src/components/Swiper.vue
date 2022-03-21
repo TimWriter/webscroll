@@ -10,10 +10,11 @@
     </div>
     <Button
       class="projects"
-      :text="$t('nav.project').toUpperCase()"
-      :size="'8'"
-      :sizeHover="'9'"
-      :fontSize="'1em'"
+      :text="$t('site.home.price')"
+      :size="'9'"
+      :sizeHover="'10'"
+      :fontSize="'1.2em'"
+      :fontWeight="'600'"
       @button-click="link('#projects')"
     />
   </div>

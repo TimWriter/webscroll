@@ -14,9 +14,9 @@
       </router-link>
       <div class="links">
         <ul>
-          <li class="hover" @click="link('#about')">
-            <a class="link-1" href="#">{{ $t("nav.about") }}</a>
-            <a class="link-2" href="#">{{ $t("nav.about") }}</a>
+          <li class="hover" @click="link('#services')">
+            <a class="link-1" href="#">{{ $t("nav.services") }}</a>
+            <a class="link-2" href="#">{{ $t("nav.services") }}</a>
           </li>
           <li class="hover" @click="link('#projects')">
             <a class="link-1" href="#">{{ $t("nav.project") }}</a>
