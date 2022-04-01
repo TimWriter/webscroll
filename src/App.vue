@@ -24,7 +24,7 @@ import Burger from "./components/Burger.vue";
 export default {
   components: {
     Navbar,
-    Burger
+    Burger,
   },
   data() {
     return {
@@ -63,13 +63,12 @@ export default {
     getDevice();
 
     if (this.device != "mobile") {
-
       const overscrollOptions = {
         enable: true,
         effect: "bounce",
         damping: this.dampOverscroll,
         maxOverscroll: this.maxOverscroll,
-        delegateTo: document
+        delegateTo: document,
       };
 
       const options = {
@@ -142,36 +141,41 @@ export default {
       let element_height = about.offsetHeight;
       if (document.querySelector("#app").clientWidth > 992) {
         this.scrollBar.addListener(() => {
-          if(this.$route.name == "Site"){
+          if (this.$route.name == "Site") {
             if (this.scrollBar.offset.y >= element_offset) {
-            this.navcolor = "purple";
-          } else if (this.navcolor == "purple") {
-            this.navcolor = "";
+              this.navcolor = "purple";
+            } else if (this.navcolor == "purple") {
+              this.navcolor = "";
+            }
+            if (this.scrollBar.offset.y >= element_offset + element_height) {
+              this.navcolor = "";
+            }
           }
-          if (this.scrollBar.offset.y >= element_offset + element_height) {
-            this.navcolor = "";
-          }
-          }
-          
         });
-      } 
+      }
     },
 
-    navbarBg(){
-      if (document.querySelector("#app").clientWidth <= 992 && this.device != "mobile") {
+    navbarBg() {
+      if (
+        document.querySelector("#app").clientWidth <= 992 &&
+        this.device != "mobile"
+      ) {
         this.scrollBar.addListener(() => {
-          if (this.positionY < this.scrollBar.offset.y && this.scrollBar.offset.y > 80) {
+          if (
+            this.positionY < this.scrollBar.offset.y &&
+            this.scrollBar.offset.y > 80
+          ) {
             this.navcolor = "hidden";
             this.burgercolor = "hidden";
           } else if (this.navcolor == "hidden") {
             this.navcolor = "";
             this.burgercolor = "";
           }
-          if(this.positionY > this.scrollBar.offset.y){
+          if (this.positionY > this.scrollBar.offset.y) {
             this.navcolor = "dark";
             this.burgercolor = "";
 
-            if(this.scrollBar.offset.y <= 80){
+            if (this.scrollBar.offset.y <= 80) {
               this.navcolor = "";
               this.burgercolor = "";
             }
@@ -179,8 +183,11 @@ export default {
           this.positionY = this.scrollBar.offset.y;
         });
       }
-      if (document.querySelector("#app").clientWidth <= 992 && this.device == "mobile") {
-        document.addEventListener('scroll', () => {
+      if (
+        document.querySelector("#app").clientWidth <= 992 &&
+        this.device == "mobile"
+      ) {
+        document.addEventListener("scroll", () => {
           if (this.positionY < window.scrollY && window.scrollY > 80) {
             this.navcolor = "hidden";
             this.burgercolor = "hidden";
@@ -188,19 +195,19 @@ export default {
             this.navcolor = "";
             this.burgercolor = "";
           }
-          if(this.positionY > window.scrollY){
+          if (this.positionY > window.scrollY) {
             this.navcolor = "dark";
             this.burgercolor = "";
-            
-            if(window.scrollY <= 80){
+
+            if (window.scrollY <= 80) {
               this.navcolor = "";
               this.burgercolor = "";
             }
           }
           this.positionY = window.scrollY;
         });
-      }  
-    }
+      }
+    },
   },
   watch: {
     $route() {
@@ -212,12 +219,14 @@ export default {
           left: 0,
         });
       }
-    
-        if (this.$route.name == "Site") {
-          this.$nextTick(function () {
+
+      if (this.$route.name == "Site") {
+        this.$nextTick(function () {
           this.aboutChangeColor();
-        })
-        }
+        });
+      } else {
+        this.navcolor = "";
+      }
     },
   },
 };

@@ -1,4 +1,10 @@
-     {
+{
+  "short_name": "webscroll",
+  "name": "webscroll",
+  "background_color": "#000",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
   "icons": [
     { "src": "/192.png", "type": "image/png", "sizes": "192x192" },
     { "src": "/512.png", "type": "image/png", "sizes": "512x512" }

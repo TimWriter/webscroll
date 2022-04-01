@@ -72,7 +72,7 @@ export default {
     rgba(0, 0, 0, 0.2) 50%,
     rgba(0, 0, 0, 0.5) 100%
   );
-  transition-duration: .2s;
+  transition-duration: 0.2s;
 
   @media only screen and (max-width: 600px) {
     height: 80px;
@@ -96,7 +96,7 @@ export default {
     position: relative;
     height: 100%;
     cursor: pointer;
-    transition-duration: .2s;
+    transition-duration: 0.2s;
 
     @media only screen and (max-width: 600px) {
       font-size: 14px;
@@ -230,17 +230,20 @@ export default {
   }
 }
 
-.hidden{
-
-  .logo{
+.hidden {
+  .logo {
     opacity: 0;
     transform: translate(0, -20px);
   }
-    
 }
 
-.dark{
-  background-color: #1D1D1D;
+.dark {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.3254435563287815) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.6);
 }
 </style>
