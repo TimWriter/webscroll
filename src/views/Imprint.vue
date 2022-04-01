@@ -1,6 +1,6 @@
 <template>
   <div id="imprint">
-    <Background :height="height + 'px'" />
+    <Background class="bg" />
     <div class="container">
       <div class="content">
         <h1>
@@ -12,12 +12,11 @@
         <h2>
           {{ $t("imprint.privacy") }}
         </h2>
-        <p id="privacy">
-          {{ $t("imprint.privacy_text") }}
+        <p id="privacy" v-html="$t('imprint.privacy_text')">
         </p>
       </div>
     </div>
-    <Footer v-bind:style="{ top: height + 'px' }" :background="true" />
+    <Footer :background="false" />
   </div>
 </template>
 
@@ -36,41 +35,29 @@ export default {
       height: 0,
     };
   },
-  mounted() {
-    //Background-height
-    function setHeight(that) {
-      let container = document.querySelector(".container");
-      that.height =
-        container.clientHeight * 1 +
-        parseFloat(getComputedStyle(container).fontSize) * 20;
-      if (that.height < window.innerHeight) {
-        that.height = window.innerHeight;
-      }
-    }
-
-    setHeight(this);
-
-    let oldWidth = document.querySelector(".container").clientWidth;
-    setInterval(() => {
-      if (document.querySelector(".container").clientWidth != oldWidth) {
-        oldWidth = document.querySelector(".container").clientWidth;
-        setHeight(this);
-      }
-    }, 300);
-  },
 };
 </script>
 
 <style lang="scss" scoped>
 #imprint {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  display: block;
+
+  @media only screen and (max-width: 600px) {
+            font-size: 12px;
+      }
+
+.bg{
   position: absolute;
-  width: 100vw;
-  height: auto;
-  font-family: Poppins, sans-serif;
+  top: -120px;
+  height: calc(100% + 120px);
+}
 
   .container {
-    position: absolute;
-    top: 100px;
+    position: relative;
+    margin: 120px 0 100px 0;
     left: 0;
     width: 100%;
     color: #fff;
@@ -80,6 +67,15 @@ export default {
     .content {
       width: 40%;
       margin: 0 auto;
+
+      @media only screen and (max-width: 1200px) {
+            width: 60%;
+      }
+
+      @media only screen and (max-width: 992px) {
+            width: 80%;
+      }
+
       #privacy {
         text-align: justify;
       }
@@ -87,6 +83,7 @@ export default {
 
     h1 {
       font-size: 2.6em;
+      margin: 0;
     }
 
     h2 {

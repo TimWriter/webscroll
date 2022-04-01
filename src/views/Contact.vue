@@ -137,10 +137,11 @@
           <div class="submit">
             <Button
               :fontSize="'1em'"
-              :size="'7'"
-              :sizeHover="'8'"
+              :size="'8'"
+              :sizeHover="'9'"
               :text="'SENDEN'"
               :sending="sending"
+              :fontWeight="'600'"
             />
             <div class="errors hidden">
               <lottie-player
@@ -190,7 +191,7 @@
         </div>
       </div>
     </div>
-    <Footer v-bind:style="{ top: height + 'px' }" :background="true" />
+    <Footer v-bind:style="{ top: height + 'px' }" :background="false" />
   </div>
 </template>
 
@@ -391,7 +392,7 @@ export default {
           @media only screen and (max-width: 600px) {
             width: 100%;
             margin: 0 0 1em 0;
-            font-size: 3em;
+            font-size: 2.6em;
           }
         }
 

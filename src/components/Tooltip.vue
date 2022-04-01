@@ -33,6 +33,7 @@ export default {
 .tooltip {
   position: relative;
   display: inline-block;
+  padding: .2em;
 
   svg {
     cursor: pointer;

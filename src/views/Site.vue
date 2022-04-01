@@ -4,8 +4,8 @@
     <section id="home">
       <div class="heading-container">
         <div>
-          <h1>{{ $t("site.home.h1") }}</h1>
-          <p>{{ $t("site.home.p") }}</p>
+          <h1 data-animate="bottom">{{ $t("site.home.h1") }}</h1>
+          <p data-animate="bottom">{{ $t("site.home.p") }}</p>
         </div>
       </div>
       <div class="image-container">
@@ -19,9 +19,9 @@
         <h2>{{ $t("site.services.services") }}</h2>
         <div class="text">
           <p v-html="$t('site.services.info_text')"></p>
-          <router-link class="link-button" to="/contact">
+          <LinkButton :to="'/contact'">
             {{ $t("site.services.request") }}
-          </router-link>
+          </LinkButton>
           <div class="spinner" v-on:mouseover="mouseover" v-on:mouseleave="mouseleave">
             <svg viewBox="0 0 100 100" width="100" height="100">
               >
@@ -47,29 +47,7 @@
             <h3>{{ $t("site.services.products_heading") }}</h3>
             <h6>{{ $t("site.services.products_subheading") }}</h6>
           </div>
-          <div class="flex">
-            <div class="product" v-for="item in $t('site.services.products')" :key="item">
-              <div class="icon">
-                <lottie-player class="lottie" :src="item.lottie" background="transparent" speed="1" loop autoplay>
-                </lottie-player>
-              </div>
-              <div class="title">
-                <h6>{{item.title}}</h6>
-              </div>
-              <div class="content">
-                <p class="text1">
-                  {{item.text1}}
-                </p>
-                <p class="text2" v-html="item.text2" />
-                <p class="price">
-                  {{item.price}}
-                </p>
-              </div>
-              <router-link class="link-button center" to="/contact">
-                {{item.button}}
-              </router-link>
-            </div>
-          </div>
+          <Products />
           <p class="price-info">{{ $t("site.services.price_info") }}</p>
         </div>
         <div class="services">
@@ -87,9 +65,9 @@
               </ul>
             </div>
           </div>
-          <router-link class="link-button center" to="/contact">
+          <LinkButton :to="'/contact'" :center="true">
             {{ $t("site.services.cardsButton") }}
-          </router-link>
+          </LinkButton>
         </div>
       </div>
 
@@ -105,7 +83,16 @@
             <div class="scrollContainer">
               <div class="scroll-item" v-for="index in 6" :key="index">
                 <span>WEBSCROLL</span>
-                <div class="icon-container"></div>
+                <div class="icon-container">
+                  <lottie-player
+                  src="https://assets5.lottiefiles.com/packages/lf20_lx6oh1np.json"
+                  background="transparent"
+                  speed="1"
+                  loop
+                  autoplay
+                  class="icon"
+                ></lottie-player>
+                </div>
               </div>
             </div>
             <svg class="arrow" width="35" height="44" viewBox="0 0 35 44" fill="none"
@@ -114,7 +101,7 @@
               <path d="M1 31M33.5 37L27.5 31M33.5 37L27.5 43" stroke-linejoin="round" stroke="white" stroke-width="2" />
             </svg>
             <p class="project-info">
-              Ein internes Projekt welches sich den Webauftritt des Unternehmens
+              Ein internes Projekt welches sich dem Webauftritt des Unternehmens
               widmet.
             </p>
           </div>
@@ -132,7 +119,7 @@
               <path d="M1 31M33.5 37L27.5 31M33.5 37L27.5 43" stroke-linejoin="round" stroke="white" stroke-width="2" />
             </svg>
             <p class="project-info">
-              Ein internes Projekt welches sich den Webauftritt des Unternehmens
+              Ein internes Projekt welches sich dem Webauftritt des Unternehmens
               widmet.
             </p>
           </div>
@@ -158,7 +145,7 @@
             d="M6.75 1a.75.75 0 0 1 .75.75V8a.5.5 0 0 0 1 0V5.467l.086-.004c.317-.012.637-.008.816.027.134.027.294.096.448.182.077.042.15.147.15.314V8a.5.5 0 0 0 1 0V6.435l.106-.01c.316-.024.584-.01.708.04.118.046.3.207.486.43.081.096.15.19.2.259V8.5a.5.5 0 1 0 1 0v-1h.342a1 1 0 0 1 .995 1.1l-.271 2.715a2.5 2.5 0 0 1-.317.991l-1.395 2.442a.5.5 0 0 1-.434.252H6.118a.5.5 0 0 1-.447-.276l-1.232-2.465-2.512-4.185a.517.517 0 0 1 .809-.631l2.41 2.41A.5.5 0 0 0 6 9.5V1.75A.75.75 0 0 1 6.75 1zM8.5 4.466V1.75a1.75 1.75 0 1 0-3.5 0v6.543L3.443 6.736A1.517 1.517 0 0 0 1.07 8.588l2.491 4.153 1.215 2.43A1.5 1.5 0 0 0 6.118 16h6.302a1.5 1.5 0 0 0 1.302-.756l1.395-2.441a3.5 3.5 0 0 0 .444-1.389l.271-2.715a2 2 0 0 0-1.99-2.199h-.581a5.114 5.114 0 0 0-.195-.248c-.191-.229-.51-.568-.88-.716-.364-.146-.846-.132-1.158-.108l-.132.012a1.26 1.26 0 0 0-.56-.642 2.632 2.632 0 0 0-.738-.288c-.31-.062-.739-.058-1.05-.046l-.048.002zm2.094 2.025z" />
         </svg>
       </div>
-      <Footer :background="false" />
+      <Footer class="footer" :background="false" />
     </section>
   </div>
 </template>
@@ -167,7 +154,9 @@
   import Cookies from "../components/Cookies.vue";
   import Scroll from "../components/Scroll.vue";
   import Swiper from "../components/Swiper.vue";
+  import Products from "../components/Products.vue";
   import Footer from "../components/Footer.vue";
+  import LinkButton from "../components/Link_Button.vue";
 
   export default {
     name: "Site",
@@ -176,8 +165,11 @@
       Cookies,
       Scroll,
       Swiper,
+      Products,
       Footer,
+      LinkButton
     },
+    props: ["scrollBar"],
     metaInfo() {
       return {
         title: "Webscroll",
@@ -197,6 +189,7 @@
       scrollTo(element) {
         this.$emit("scroll-event", element);
       },
+      
       moveGif(x, y) {
         let gif = document.querySelector("#lovegif");
         gif.style.top = y * 0.3 - 100 + "px";
@@ -406,6 +399,7 @@
 
       @media only screen and (max-width: 600px) {
         padding: 2em 10% 10vw 10%;
+        font-size: 12px;
       }
 
       div {
@@ -429,6 +423,17 @@
         padding: 7%;
         border-radius: .6em;
         margin: 5em auto;
+
+        @media only screen and (max-width: 992px) {
+          width: 75%;
+        }
+
+        @media only screen and (max-width: 665px) {
+          width: 100%;
+           padding: 0%;
+           background-color: rgba(255, 255, 255, 0);
+           margin: 1em auto;
+        }
       }
 
       p {
@@ -472,6 +477,10 @@
         @media only screen and (max-width: 992px) {
           font-size: 2em;
         }
+
+        @media only screen and (max-width: 665px) {
+          margin: 3em 0 0 0;
+        }
       }
 
       h6 {
@@ -481,11 +490,18 @@
         margin: 0;
       }
 
+      .services{
+
+
       .cards {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         width: 100%;
+        @media only screen and (max-width: 992px) {
+            flex-wrap: wrap;
+            margin: 4em 0;
+          }
 
         .card {
           margin: 4em 0;
@@ -493,6 +509,17 @@
           width: 25%;
           padding: 2em 3%;
           border-radius: .6em;
+
+          @media only screen and (max-width: 992px) {
+            width: 60%;
+            margin: .5em 20%;
+            padding: 2em 2em;
+          }
+
+          @media only screen and (max-width: 665px) {
+            width: 100%;
+            margin: .5em 0%;
+          }
 
           lottie-player {
             position: relative;
@@ -521,7 +548,10 @@
             }
           }
         }
+      } 
       }
+
+      
 
       .spinner {
         position: absolute;
@@ -535,6 +565,10 @@
         background-color: #ffffff;
         border: 2px solid #da3232;
         box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.151);
+
+        @media only screen and (max-width: 665px) {
+          display: none;
+        }
 
 
         svg {
@@ -605,18 +639,19 @@
         left: -15%;
         margin: 12em 0 8em 0;
 
-        .flex{
-          position: relative;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+        @media only screen and (max-width: 665px) {
+          margin: 6em 0 2em 0;
+          padding: 1em 15% 2em 15%;
         }
 
         .title {
           position: relative;
           top: 0;
           margin: 0 0 4em 0;
+
+          @media only screen and (max-width: 600px) {
+            margin: 0 0 2em 0;
+          }
 
           h3 {
             margin: 3em 0 0 0;
@@ -629,80 +664,6 @@
           display: block;
           text-align: center;
           margin: 3em 0;
-        }
-
-        .product {
-          position: relative;
-          border-radius: .7em;
-          width: 25%;
-          padding: 2em 3% 3em 3%;
-          border: 2px solid #aaaaaa;
-          background-color: #fff;
-          z-index: 1;
-          transition-duration: .4s;
-
-          &:hover {
-            border: 2px solid #777777;
-          }
-
-          .icon {
-            position: relative;
-            display: flex;
-            justify-content: center;
-
-            .lottie {
-              width: 12em;
-              height: 12em;
-            }
-          }
-
-          .title {
-            position: relative;
-
-            h6 {
-              font-weight: 600;
-              font-size: 1.6em;
-              text-align: center;
-              margin: 0;
-            }
-          }
-
-          .content {
-            margin: 2em 0 2em 0;
-
-            p {
-              font-size: 1em;
-              color: #434343;
-              margin: 0;
-              text-align: center;
-            }
-
-            .text1 {
-              position: relative;
-              font-size: 1em;
-              color: #000;
-              width: auto;
-
-              &::after {
-                position: absolute;
-                content: '';
-                width: 30%;
-                height: 2px;
-                background: #cfcfcf;
-                bottom: -1em;
-                left: 35%;
-              }
-            }
-
-            .text2 {
-              margin: 2em 0 1em 0;
-            }
-
-            .price {
-              font-weight: 600;
-              font-size: 1.2em;
-            }
-          }
         }
       }
     }
@@ -807,12 +768,22 @@
             color: #000;
 
             .icon-container {
+              position: relative;
               display: inline-block;
               height: 0.8em;
               width: 0.8em;
               border-radius: 50%;
               border: 2px solid #dddddd;
               margin: auto 0.3em;
+
+              .icon{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 60%;
+                height: auto;
+              }
             }
           }
         }
@@ -891,6 +862,7 @@
           top: 15%;
         }
 
+
         p {
           font-size: 8vw;
           font-weight: 700;
@@ -898,9 +870,10 @@
           transition-duration: 0.2s;
 
           @media only screen and (max-width: 992px) {
-            font-size: 12vw;
-            line-height: 12vw;
+            font-size: 9vw;
+            line-height: 9vw;
             text-align: center;
+            margin-top: 1.5em;
           }
 
           @media only screen and (max-width: 400px) {
@@ -1094,47 +1067,6 @@
           transform: scale(0.98);
         }
       }
-    }
-
-    .link-button {
-      position: relative;
-      display: inline-block;
-      width: auto;
-      overflow: hidden;
-      font-size: 1em;
-      color: #fff;
-      background-color: #5c5aa4;
-      padding: 1em 1.5em;
-      text-decoration: none;
-      font-weight: 600;
-      border-radius: .4em;
-      cursor: pointer;
-      transition-duration: .4s;
-
-      &:hover {
-        box-shadow: 10px 10px 0px #000;
-
-        &::after {
-          left: 150%;
-          transition-duration: 1s;
-        }
-      }
-
-      &::after {
-        position: absolute;
-        content: '';
-        left: -50%;
-        top: -50%;
-        height: 200%;
-        width: 30%;
-        background-color: #ffffff28;
-        transform: rotate(20deg);
-      }
-    }
-
-    .link-button.center {
-      left: 50%;
-      transform: translate(-50%, 0);
     }
   }
 </style>

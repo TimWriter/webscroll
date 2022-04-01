@@ -26,7 +26,6 @@ export default {
   position: relative;
   width: 80vw;
   padding: 0 10vw;
-  height: auto;
   color: #e4e4e4;
   display: flex;
   justify-content: space-between;
@@ -37,6 +36,10 @@ export default {
   @media only screen and (max-width: 992px) {
     flex-direction: column;
     height: 15em;
+  }
+
+  @media only screen and (max-width: 600px) {
+          font-size: 12px;
   }
 
   .logo {

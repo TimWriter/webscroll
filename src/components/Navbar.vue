@@ -18,6 +18,10 @@
             <a class="link-1" href="#">{{ $t("nav.services") }}</a>
             <a class="link-2" href="#">{{ $t("nav.services") }}</a>
           </li>
+          <li class="hover" @click="$router.push('/prices')">
+            <a class="link-1" href="#">{{ $t("nav.prices") }}</a>
+            <a class="link-2" href="#">{{ $t("nav.prices") }}</a>
+          </li>
           <li class="hover" @click="link('#projects')">
             <a class="link-1" href="#">{{ $t("nav.project") }}</a>
             <a class="link-2" href="#">{{ $t("nav.project") }}</a>
@@ -68,6 +72,7 @@ export default {
     rgba(0, 0, 0, 0.2) 50%,
     rgba(0, 0, 0, 0.5) 100%
   );
+  transition-duration: .2s;
 
   @media only screen and (max-width: 600px) {
     height: 80px;
@@ -80,15 +85,21 @@ export default {
     margin: 0 10%;
     display: flex;
     justify-content: space-between;
+
+    @media only screen and (max-width: 600px) {
+      width: 90%;
+      margin: 0 5%;
+    }
   }
 
   .logo {
     position: relative;
     height: 100%;
     cursor: pointer;
+    transition-duration: .2s;
 
     @media only screen and (max-width: 600px) {
-      font-size: 12px;
+      font-size: 14px;
     }
 
     #icon {
@@ -217,5 +228,19 @@ export default {
       color: #605eca !important;
     }
   }
+}
+
+.hidden{
+
+  .logo{
+    opacity: 0;
+    transform: translate(0, -20px);
+  }
+    
+}
+
+.dark{
+  background-color: #1D1D1D;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.6);
 }
 </style>

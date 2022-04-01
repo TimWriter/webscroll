@@ -65,6 +65,7 @@ export default {
     overflow: hidden;
     user-select: none;
     font-weight: var(--fontWeight);
+    white-space: nowrap;
 
     span:nth-child(1) {
       position: absolute;

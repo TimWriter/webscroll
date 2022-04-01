@@ -1,9 +1,10 @@
 <template>
   <div id="app">
     <Navbar :colorClass="navcolor" @scroll-event="scrollTo" />
+    <Burger :colorClass="burgercolor" />
     <div id="scroll-container">
       <div class="scroll-content">
-        <router-view @scroll-event="scrollTo" />
+        <router-view :scrollBar="scrollBar" @scroll-event="scrollTo" />
       </div>
       <div class="scrollbar-track scrollbar-track-x">
         <div class="scrollbar-thumb scrollbar-thumb-x"></div>
@@ -19,18 +20,22 @@
 import Scrollbar, { ScrollbarPlugin } from "smooth-scrollbar";
 import OverscrollPlugin from "smooth-scrollbar/plugins/overscroll";
 import Navbar from "./components/Navbar.vue";
+import Burger from "./components/Burger.vue";
 export default {
   components: {
     Navbar,
+    Burger
   },
   data() {
     return {
       scrollBar: "",
       navcolor: "",
+      burgercolor: "",
       device: "",
       damping: 0.15,
       maxOverscroll: 100,
       dampOverscroll: 0.3,
+      positionY: 0,
     };
   },
   mounted() {
@@ -58,12 +63,15 @@ export default {
     getDevice();
 
     if (this.device != "mobile") {
+
       const overscrollOptions = {
         enable: true,
         effect: "bounce",
         damping: this.dampOverscroll,
         maxOverscroll: this.maxOverscroll,
+        delegateTo: document
       };
+
       const options = {
         damping: this.damping,
         thumbMinSize: 15,
@@ -71,6 +79,7 @@ export default {
         alwaysShowTracks: false,
         continuousScrolling: true,
       };
+
       class DisableScrollPlugin extends ScrollbarPlugin {
         static pluginName = "disableScroll";
 
@@ -103,6 +112,8 @@ export default {
       );
     }
 
+    this.navbarBg();
+
     //Change color on About
     if (this.$route.name == "Site") {
       this.aboutChangeColor();
@@ -110,7 +121,6 @@ export default {
   },
   methods: {
     scrollTo(element) {
-      console.log(element);
       if (this.$route.name == "Site") {
         let element_offset = document.querySelector(element).offsetTop;
         if (this.device != "mobile") {
@@ -126,14 +136,14 @@ export default {
         this.$router.push("/");
       }
     },
-
     aboutChangeColor() {
       let about = document.querySelector("#services");
       let element_offset = about.offsetTop * 0.95;
       let element_height = about.offsetHeight;
-      if (this.device != "mobile") {
+      if (document.querySelector("#app").clientWidth > 992) {
         this.scrollBar.addListener(() => {
-          if (this.scrollBar.offset.y >= element_offset) {
+          if(this.$route.name == "Site"){
+            if (this.scrollBar.offset.y >= element_offset) {
             this.navcolor = "purple";
           } else if (this.navcolor == "purple") {
             this.navcolor = "";
@@ -141,20 +151,56 @@ export default {
           if (this.scrollBar.offset.y >= element_offset + element_height) {
             this.navcolor = "";
           }
+          }
+          
         });
-      } else {
-        document.addEventListener("scroll", () => {
-          if (window.scrollY >= element_offset) {
-            this.navcolor = "purple";
-          } else if (this.navcolor == "purple") {
+      } 
+    },
+
+    navbarBg(){
+      if (document.querySelector("#app").clientWidth <= 992 && this.device != "mobile") {
+        this.scrollBar.addListener(() => {
+          if (this.positionY < this.scrollBar.offset.y && this.scrollBar.offset.y > 80) {
+            this.navcolor = "hidden";
+            this.burgercolor = "hidden";
+          } else if (this.navcolor == "hidden") {
             this.navcolor = "";
+            this.burgercolor = "";
           }
-          if (window.scrollY >= element_offset + element_height) {
-            this.navcolor = "";
+          if(this.positionY > this.scrollBar.offset.y){
+            this.navcolor = "dark";
+            this.burgercolor = "";
+
+            if(this.scrollBar.offset.y <= 80){
+              this.navcolor = "";
+              this.burgercolor = "";
+            }
           }
+          this.positionY = this.scrollBar.offset.y;
         });
       }
-    },
+      if (document.querySelector("#app").clientWidth <= 992 && this.device == "mobile") {
+        document.addEventListener('scroll', () => {
+          if (this.positionY < window.scrollY && window.scrollY > 80) {
+            this.navcolor = "hidden";
+            this.burgercolor = "hidden";
+          } else if (this.navcolor == "hidden") {
+            this.navcolor = "";
+            this.burgercolor = "";
+          }
+          if(this.positionY > window.scrollY){
+            this.navcolor = "dark";
+            this.burgercolor = "";
+            
+            if(window.scrollY <= 80){
+              this.navcolor = "";
+              this.burgercolor = "";
+            }
+          }
+          this.positionY = window.scrollY;
+        });
+      }  
+    }
   },
   watch: {
     $route() {
@@ -166,11 +212,12 @@ export default {
           left: 0,
         });
       }
-      window.addEventListener("load", function () {
+    
         if (this.$route.name == "Site") {
+          this.$nextTick(function () {
           this.aboutChangeColor();
+        })
         }
-      });
     },
   },
 };
@@ -192,14 +239,17 @@ body {
   height: 100vh;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  overflow: hidden;
 
   @media only screen and (max-width: 450px) {
     height: 100%;
+    overflow: hidden;
   }
 }
 
 .scrollbar-track {
   background-color: rgba(0, 0, 0, 0.479) !important;
+  z-index: 10;
 }
 
 .scrollbar-thumb {

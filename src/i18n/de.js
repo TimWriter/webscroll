@@ -1,6 +1,7 @@
 const de = {
     nav: {
         services: 'Leistungen',
+        prices: 'Preise',
         project: 'Projekte',
         contact: 'Kontakt'
     },
@@ -64,6 +65,7 @@ const de = {
                     link: '/',
                     button: 'MEHR DAZU',
                     lottie: 'https://assets10.lottiefiles.com/private_files/lf30_ndiqey5b.json',
+                    lottie_dark: 'https://assets7.lottiefiles.com/private_files/lf30_kmtw5gez.json',
                 },
                 2: {
                     title: 'Website',
@@ -73,6 +75,7 @@ const de = {
                     link: '/',
                     button: 'MEHR DAZU',
                     lottie: 'https://assets1.lottiefiles.com/private_files/lf30_gvzcrdpr.json',
+                    lottie_dark: 'https://assets8.lottiefiles.com/private_files/lf30_jehoxcyu.json',
                 },
                 3: {
                     title: 'Webshop',
@@ -82,6 +85,7 @@ const de = {
                     link: '/',
                     button: 'MEHR DAZU',
                     lottie: 'https://assets2.lottiefiles.com/packages/lf20_xxlopc4j.json',
+                    lottie_dark: 'https://assets10.lottiefiles.com/packages/lf20_3nqlyilt.json',
                 },
             },
         },
@@ -132,12 +136,12 @@ const de = {
 
             Sollten Sie auf dieser Webseite Inhalte finden, die das Urheberrecht verletzen, bitten wir Sie uns zu kontaktieren.
 
-            Haftung für Links auf dieser Webseite
+            <b style="font-size: 1.1em;">Haftung für Links auf dieser Webseite</b>
             Unsere Webseite enthält Links zu anderen Webseiten für deren Inhalt wir nicht verantwortlich sind. Haftung für verlinkte Websites besteht für uns nicht, da wir keine Kenntnis rechtswidriger Tätigkeiten hatten und haben, uns solche Rechtswidrigkeiten auch bisher nicht aufgefallen sind und wir Links sofort entfernen würden, wenn uns Rechtswidrigkeiten bekannt werden.
 
             Wenn Ihnen rechtswidrige Links auf unserer Website auffallen, bitte wir Sie uns zu kontaktieren. Sie finden die Kontaktdaten im Impressum.
 
-            Haftung für Inhalte dieser Website
+            <b style="font-size: 1.1em;">Haftung für Inhalte dieser Website</b>
             Wir entwickeln die Inhalte dieser Webseite ständig weiter und bemühen uns korrekte und aktuelle Informationen bereitzustellen.  Leider können wir keine Haftung für die Korrektheit aller Inhalte auf dieser Website übernehmen, speziell für jene, die seitens Dritter bereitgestellt wurden. Als Diensteanbieter sind wir nicht verpflichtet, die von ihnen übermittelten oder gespeicherten Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
 
             Unsere Verpflichtungen zur Entfernung von Informationen oder zur Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen aufgrund von gerichtlichen oder behördlichen Anordnungen bleiben auch im Falle unserer Nichtverantwortlichkeit davon unberührt.

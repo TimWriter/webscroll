@@ -10,7 +10,7 @@
         />
       </div>
     </div>
-    <Footer :background="true" />
+    <Footer :background="false" />
   </div>
 </template>
 
